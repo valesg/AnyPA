@@ -26,7 +26,6 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.startUpdatingLocation()
-        print("THis is that")
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             self.shortestDistance += 1
          }
@@ -49,6 +48,7 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
         
         let latitude: CLLocationDegrees = 37.2
         let longitude: CLLocationDegrees = 22.9
+        
         let stationPimisiLocation: CLLocation = CLLocation(latitude: latitude,
           longitude: longitude)
         distanceFromStation = Int((location.distance(from: stationPimisiLocation) / 1000))
@@ -57,22 +57,51 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
 }
 struct LocatorVenueVehicle: View {
     @ObservedObject var stationProximityDetector = StationProximityDetector()
+    var trainStations: [TrainStation] = []
     
     var body: some View {
-        VStack {
-        Text("\(stationProximityDetector.shortestDistance)")
-        Text("\(stationProximityDetector.distanceFromStation) km")
-        Text("Based on curent location, travel habits, train status, get info on...")
-        Text(">Nearest train station")
-        Text(">Offers for taxi or other transport alternatives")
-        Text(">Suggestions on best time to leave, route etc.")
+        
+        NavigationView {
+
+
+            
+            List(trainStations) { trainStation in
+            NavigationLink(destination: StationDetail(trainStation: trainStation)) {
+            Image(trainStation.thumbnailNameStation)
+                .resizable()
+                .cornerRadius(5.0)
+                .frame(width: 150, height: 125)
+            
+            VStack(alignment: .leading) {
+                Text(trainStation.name)
+                Text("Geo: " + "\(trainStation.stationlatitude)" + ", \(trainStation.stationlongitude)" + " DIST")
+                    .font(.subheadline)
+                Text("Get Taxi. Find scooter")
+                .font(.subheadline)
+                Text("Restaurants & Bars")
+                .font(.subheadline)
+                Text("Coupons")
+                .font(.subheadline)
+            }
+           }
         }
+        .navigationBarTitle(Text("Assistant"))
+        }
+
+        // VStack {
+        // Text("\(stationProximityDetector.shortestDistance)")
+        // Text("\(stationProximityDetector.distanceFromStation) km")
+        // Text("Based on curent location, travel habits, train status, get info on...")
+        // Text(">Nearest train station")
+        // Text(">Offers for taxi or other transport alternatives")
+        // Text(">Suggestions on best time to leave, route etc.")
+        // }
         
     }
 }
 
 struct LocatorVenueVehicle_Previews: PreviewProvider {
     static var previews: some View {
-        LocatorVenueVehicle()
+        LocatorVenueVehicle(trainStations: testData)
     }
 }

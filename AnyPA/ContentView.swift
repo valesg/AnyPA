@@ -38,7 +38,6 @@ struct ContentView: View {
                 .font(.subheadline)
                 //Text("Prox: " + "\(self.astationProximityDetector.shortestDistance)")
                 
-                
             }
            }
         }
@@ -50,12 +49,10 @@ struct ContentView: View {
                 Text("Stations")
     
                 }
-                
                 NavigationLink(destination: Following()) {
                 Text("In-Train")
                 
                 }
-                
                 NavigationLink(destination: Following()) {
                 Text("Follow")
                 
@@ -68,7 +65,6 @@ struct ContentView: View {
                 NavigationLink(destination: ISpeak()) {
                     Text("iSpeak")
                 }
-                
                 NavigationLink(destination: LocatorVenueVehicle()) {
                     Text("Assistant")
                 }
