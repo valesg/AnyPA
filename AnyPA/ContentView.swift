@@ -11,6 +11,19 @@ import SwiftUI
 import MapKit
 import CoreLocation
 
+
+func distanceFromOttawaStation(whereAmI: CLLocation) {
+    
+    
+    let latitude: CLLocationDegrees = 37.2
+    let longitude: CLLocationDegrees = 22.9
+    
+    let stationPimisiLocation: CLLocation = CLLocation(latitude: latitude,
+      longitude: longitude)
+    // distanceFromStation = Int((location.distance(from: stationPimisiLocation) / 1000))
+    // distanceFromStation = Int((whereAmI.distance(from: stationPimisiLocation) / 1000))
+}
+
 struct ContentView: View {
     @State var locatedInTrain = true
     var trainStations: [TrainStation] = []
@@ -27,7 +40,7 @@ struct ContentView: View {
                 .resizable()
                 .cornerRadius(5.0)
                 .frame(width: 150, height: 125)
-            
+                
             VStack(alignment: .leading) {
                 Text(trainStation.name)
                 Text("Geo: " + "\(trainStation.stationlatitude)" + ", \(trainStation.stationlongitude) " + "\(self.astationProximityDetector.shortestDistance)")
@@ -54,12 +67,8 @@ struct ContentView: View {
                 
                 }
                 NavigationLink(destination: Following()) {
-                Text("Follow")
+                    Text("Follow " + "\(self.astationProximityDetector.distanceFromStation) km")
                 
-                }
-                
-                Button("About") {
-                    print("About Tapped")
                 }
                 
                 NavigationLink(destination: ISpeak()) {
@@ -67,6 +76,9 @@ struct ContentView: View {
                 }
                 NavigationLink(destination: LocatorVenueVehicle()) {
                     Text("Assistant")
+                }
+                Button("About") {
+                    print("About Tapped")
                 }
 
             })

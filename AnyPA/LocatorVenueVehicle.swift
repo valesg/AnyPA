@@ -16,11 +16,13 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
     @Published var shortestDistance: Int = 2
     var locationManager: CLLocationManager?
     @Published var distanceFromStation: Int = 4
+    @Published var location: CLLocation?
 
     
     override init() {
     
         super.init()
+        location = CLLocation()
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
@@ -61,10 +63,9 @@ struct LocatorVenueVehicle: View {
     
     var body: some View {
         
+        
         NavigationView {
 
-
-            
             List(trainStations) { trainStation in
             NavigationLink(destination: StationDetail(trainStation: trainStation)) {
             Image(trainStation.thumbnailNameStation)
@@ -78,14 +79,14 @@ struct LocatorVenueVehicle: View {
                     .font(.subheadline)
                 Text("Get Taxi. Find scooter")
                 .font(.subheadline)
-                Text("Restaurants & Bars")
+                Text("Eat. See. Do. Listen")
                 .font(.subheadline)
-                Text("Coupons")
+                Text("Rewards & Coupons")
                 .font(.subheadline)
             }
            }
         }
-        .navigationBarTitle(Text("Assistant"))
+            .navigationBarTitle(Text("Assistant " + "\(self.stationProximityDetector.location!.coordinate.latitude); " + "\(stationProximityDetector.distanceFromStation) km"))
         }
 
         // VStack {
