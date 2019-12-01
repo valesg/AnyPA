@@ -75,17 +75,18 @@ struct LocatorVenueVehicle: View {
             
             VStack(alignment: .leading) {
                 Text(trainStation.name)
-                Text("Geo: " + "\(trainStation.stationlatitude)" + ", \(trainStation.stationlongitude)" + " DIST")
-                    .font(.subheadline)
+
                 Text("Get Taxi. Find scooter")
                 .font(.subheadline)
                 Text("Eat. See. Do. Listen")
                 .font(.subheadline)
                 Text("Rewards & Coupons")
                 .font(.subheadline)
+                Text("Loc: " + "\(trainStation.stationlatitude)" + ", \(trainStation.stationlongitude)")
+                    .font(.subheadline)
             }
            }
-        }.navigationBarTitle(Text("Assist " + "\(self.stationProximityDetector.location!.coordinate.latitude); " + "\(stationProximityDetector.distanceFromStation) km"))
+        }.navigationBarTitle(Text("Nearby " + "\(self.stationProximityDetector.location!.coordinate.latitude); " + "\(stationProximityDetector.distanceFromStation) km"))
             
         }
 

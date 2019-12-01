@@ -13,6 +13,7 @@
 		E999D51E234A798700228B1C /* TrainStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D51D234A798700228B1C /* TrainStation.swift */; };
 		E9B326492353CA29009467A1 /* TrainDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B326482353CA29009467A1 /* TrainDetail.swift */; };
 		E9B3DE702392C79000DB290E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3DE6F2392C79000DB290E /* AppView.swift */; };
+		E9B3DE7223947C3B00DB290E /* AnyAnnouncements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3DE7123947C3B00DB290E /* AnyAnnouncements.swift */; };
 		E9BC6B99237907ED00AC50E3 /* ISpeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC6B98237907ED00AC50E3 /* ISpeak.swift */; };
 		E9D16C9A23554DD400410E8E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D16C9923554DD400410E8E /* CoreLocation.framework */; };
 		E9E9B5B723493BF200731F1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9B5B623493BF200731F1A /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		E999D51D234A798700228B1C /* TrainStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStation.swift; sourceTree = "<group>"; };
 		E9B326482353CA29009467A1 /* TrainDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDetail.swift; sourceTree = "<group>"; };
 		E9B3DE6F2392C79000DB290E /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		E9B3DE7123947C3B00DB290E /* AnyAnnouncements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAnnouncements.swift; sourceTree = "<group>"; };
 		E9BC6B98237907ED00AC50E3 /* ISpeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISpeak.swift; sourceTree = "<group>"; };
 		E9D16C9923554DD400410E8E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E9E9B5B323493BF200731F1A /* AnyPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,7 @@
 				E9B3DE6F2392C79000DB290E /* AppView.swift */,
 				E9E9B5BA23493BF200731F1A /* ContentView.swift */,
 				E999D51D234A798700228B1C /* TrainStation.swift */,
+				E9B3DE7123947C3B00DB290E /* AnyAnnouncements.swift */,
 				E96B0D36235103C200BC53B5 /* StationDetail.swift */,
 				E9B326482353CA29009467A1 /* TrainDetail.swift */,
 				E914020323516E41005639E5 /* Following.swift */,
@@ -304,6 +307,7 @@
 			files = (
 				E9E9B5B723493BF200731F1A /* AppDelegate.swift in Sources */,
 				E9BC6B99237907ED00AC50E3 /* ISpeak.swift in Sources */,
+				E9B3DE7223947C3B00DB290E /* AnyAnnouncements.swift in Sources */,
 				E914020423516E41005639E5 /* Following.swift in Sources */,
 				E999D51E234A798700228B1C /* TrainStation.swift in Sources */,
 				E90B53AE235CB27D00131CF3 /* LocatorVenueVehicle.swift in Sources */,
@@ -486,7 +490,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.metcove.AnyPA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -508,7 +512,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.metcove.AnyPA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

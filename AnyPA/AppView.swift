@@ -19,17 +19,17 @@ struct AppView: View {
                     .font(.title)
                 Text("Stations")
             }).tag(0)
-            ContentView(trainStations: testData).tabItem({
+            AnyAnnouncements(trainStation: testData[1]).tabItem({
                 Image(systemName: "list.dash")
                     .font(.title)
-                Text("Announcement")
+                Text("Announcements")
             }).tag(1)
             ISpeak().tabItem({
                 Image(systemName: "mic")
                     .font(.title)
                 Text("Speak")
             }).tag(2)
-            LocatorVenueVehicle().tabItem({
+            LocatorVenueVehicle(trainStations: testData).tabItem({
                 Image(systemName: "location")
                     .font(.title)
                 Text("Nearby")
@@ -40,7 +40,7 @@ struct AppView: View {
                     .font(.title)
                 Text("Settings")
             }).tag(4)
-        }.accentColor(Color.red)
+        } //.accentColor(Color.red)
     }
 }
 
