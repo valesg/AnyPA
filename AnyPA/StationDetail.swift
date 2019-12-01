@@ -21,18 +21,13 @@ struct StationDetail: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
         
-       
         Text("Station Audio Announcements")
-        Text(" ")
+        Spacer()
         Text("10:55AM An earlier incident has been resolved.  Normal service now resumed")
         Text("10:40AM Due to an incident, we expect a delay of 20 minutes")
-        Text("10:30AM Passenger with bicycles are invited to board the last car")
-        Text(" ")
-        NavigationLink(destination: Following()) {
-        Text("You may follow in-train and/or station announcements")
+        Text("10:30AM Passengers with bicycles are invited to board the last car")
+        Text("10:05AM Please remove any obstruction to the door")
         Spacer()
-
-        }
             } .padding()
         .navigationBarTitle(Text("\(trainStation.name)" + " Station"), displayMode: .inline)
         }

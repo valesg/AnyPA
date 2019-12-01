@@ -10,9 +10,10 @@ import SwiftUI
 
 struct AppView: View {
     var trainStations: [TrainStation] = []
+    @State var selected = 0
     
     var body: some View {
-        TabView {
+        TabView(selection: $selected) {
             ContentView(trainStations: testData).tabItem({
                 Image(systemName: "tram.fill")
                     .font(.title)
@@ -39,7 +40,7 @@ struct AppView: View {
                     .font(.title)
                 Text("Settings")
             }).tag(4)
-        }
+        }.accentColor(Color.red)
     }
 }
 

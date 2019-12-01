@@ -43,33 +43,33 @@ struct ContentView: View {
                 
             VStack(alignment: .leading) {
                 Text(trainStation.name)
-                Text("Geo: " + "\(trainStation.stationlatitude)" + ", \(trainStation.stationlongitude) " + "\(self.astationProximityDetector.shortestDistance)")
-                    .font(.subheadline)
+                
                 Text("Blair Bound: Next train @ " + "\(trainStation.nextTrainTimeBlairBound)")
                 .font(.subheadline)
                 Text("Tunneys Bound: Next train @ " + "\(trainStation.tunneysBoundNextTrainTime)")
                 .font(.subheadline)
-                //Text("Prox: " + "\(self.astationProximityDetector.shortestDistance)")
+                Text("Loc: " + "\(trainStation.stationlatitude)" + ", \(trainStation.stationlongitude) " + "\(self.astationProximityDetector.shortestDistance)")
+                .font(.subheadline)
                 
             }
            }
         }
         .navigationBarTitle(Text("Train Stations"))
-        .navigationBarItems(leading:
-            HStack {
+        // .navigationBarItems(leading:
+        //    HStack {
             
-                NavigationLink(destination: Following()) {
-                    Text("Nearest @ " + "\(self.astationProximityDetector.distanceFromStation) km")
+        //        NavigationLink(destination: Following()) {
+        //            Text("Nearest @ " + "\(self.astationProximityDetector.distanceFromStation) km")
                 
-                }
+        //        }
                 
                 // Button("About") {
                 //    print("About Tapped")
                 // }
 
-            })
+        //    })
            .alert(isPresented: $locatedInTrain) {
-            Alert(title: Text("In-Train"), message: Text("In-Train announcements are available"), dismissButton: .default(Text("Ok")))
+            Alert(title: Text("In-Train"), message: Text("In-Train announcements are also available"), dismissButton: .default(Text("Ok")))
             }
         }
     }

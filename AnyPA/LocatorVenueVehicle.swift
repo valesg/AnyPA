@@ -85,8 +85,8 @@ struct LocatorVenueVehicle: View {
                 .font(.subheadline)
             }
            }
-        }
-            .navigationBarTitle(Text("Assistant " + "\(self.stationProximityDetector.location!.coordinate.latitude); " + "\(stationProximityDetector.distanceFromStation) km"))
+        }.navigationBarTitle(Text("Assist " + "\(self.stationProximityDetector.location!.coordinate.latitude); " + "\(stationProximityDetector.distanceFromStation) km"))
+            
         }
 
         // VStack {
