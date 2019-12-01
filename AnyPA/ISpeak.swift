@@ -112,7 +112,7 @@ struct ISpeak: View {
                     }
                     
             }
-        }.navigationBarTitle("Annoucement Builder")
+        }.navigationBarTitle("Say It...")
         
     }
 }

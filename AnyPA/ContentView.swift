@@ -57,29 +57,15 @@ struct ContentView: View {
         .navigationBarTitle(Text("Train Stations"))
         .navigationBarItems(leading:
             HStack {
-                
+            
                 NavigationLink(destination: Following()) {
-                Text("Stations")
-    
-                }
-                NavigationLink(destination: Following()) {
-                Text("In-Train")
-                
-                }
-                NavigationLink(destination: Following()) {
-                    Text("Follow " + "\(self.astationProximityDetector.distanceFromStation) km")
+                    Text("Nearest @ " + "\(self.astationProximityDetector.distanceFromStation) km")
                 
                 }
                 
-                NavigationLink(destination: ISpeak()) {
-                    Text("iSpeak")
-                }
-                NavigationLink(destination: LocatorVenueVehicle()) {
-                    Text("Assistant")
-                }
-                Button("About") {
-                    print("About Tapped")
-                }
+                // Button("About") {
+                //    print("About Tapped")
+                // }
 
             })
            .alert(isPresented: $locatedInTrain) {
