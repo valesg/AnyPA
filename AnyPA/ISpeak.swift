@@ -9,11 +9,15 @@
 import SwiftUI
 
 struct ISpeak: View {
-    var announceType = ["Ad-hoc", "Boarding", "Departure", "Gate Change", "Lost & Found", "Delay"]
+    var announceType = ["Delay", "On-Time", "Ad-hoc", "Boarding", "Departure", "Gate Change", "Lost & Found"]
     var passengerType = ["With small children", "Premiere", "A-F", "G-L", "M-R", "All Passengers"]
+    var affectedTrainLine = ["Blair Bound", "Tunneys Bound"]
+    var listeningStation = ["Tunneys", "Bayview", "Lyon", "Parliament", "Rideau"]
     @State var adHocMsg: String = "This is an Ad-hoc message"
     @State private var selectedAnnounceType = 0
     @State private var selectedPassengerType = 0
+    @State private var selectedListeningStation = 0
+    @State private var selectedAffectedTrainLine = 1
     @State var sayAnnouncement = false
     @State var delay = 5
     @State var trainLine: String = ""
@@ -48,7 +52,7 @@ struct ISpeak: View {
                             // {
                             // Text("Train Line")
                             // }
-                            Picker(selection: $selectedPassengerType, label: Text("Passenger Category")) {
+                            Picker(selection: $selectedPassengerType, label: Text("Passenger Type")) {
                                 ForEach(0..<passengerType.count) {
                                     Text(self.passengerType[$0])
                                 }
@@ -84,16 +88,44 @@ struct ISpeak: View {
                             }
                     }
                     else if self.announceType[selectedAnnounceType] == "Delay" {
-                        Text("What Train?")
-                        TextField("Train Line", text: $trainLine)
+                        Picker(selection: $selectedAffectedTrainLine, label: Text("Train Line")) {
+                            ForEach(0..<affectedTrainLine.count) {
+                                Text(self.affectedTrainLine[$0])
+                            }
+                        }
+                        Picker(selection: $selectedListeningStation, label: Text("Train Station")) {
+                            ForEach(0..<listeningStation.count) {
+                                Text(self.listeningStation[$0])
+                            }
+                        }
                         Stepper(value: $delay, in: 5...50) {
                          Text("Estimated Delay: \(self.delay) min")
                         }
-                        Text("Msg: Attention, we expect a 15 minutes delay for Line 1 trains.")
+                        Text("Msg: Attention, there is a delay of around \(self.delay) minutes.")
                          Button(action: {
                              self.sayAnnouncement.toggle()
                          })
                             {
+                                Text("Play Announcement")
+                            }
+                    }
+                    else if self.announceType[selectedAnnounceType] == "On-Time" {
+                        Picker(selection: $selectedAffectedTrainLine, label: Text("Train Line")) {
+                            ForEach(0..<affectedTrainLine.count) {
+                                Text(self.affectedTrainLine[$0])
+                            }
+                        }
+                        Picker(selection: $selectedListeningStation, label: Text("Train Station")) {
+                            ForEach(0..<listeningStation.count) {
+                                Text(self.listeningStation[$0])
+                            }
+                        }
+                        Text("Msg: Attention, trains are running on time.")
+                         Button(action: {
+                             self.sayAnnouncement.toggle()
+                         })
+                            {
+                                .spacer()
                                 Text("Play Announcement")
                             }
                     }
@@ -112,7 +144,7 @@ struct ISpeak: View {
                     }
                     
             }
-        }.navigationBarTitle("Say It...")
+        }.navigationBarTitle("Say something...")
         
     }
 }

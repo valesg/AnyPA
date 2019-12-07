@@ -21,7 +21,7 @@ struct AnyAnnouncements: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
         
-        Text("Station Announcements (Audio & Text)")
+        Text("Recent Announcements (Audio-to-Text)")
         Spacer()
         Text("10:55AM (by OC Transpo) An earlier incident has been resolved.  Normal service now resumed - Pimisi station")
         Text("10:40AM (by Passenger) Due to an incident, there is an expected delay of 20 minutes - All stations")

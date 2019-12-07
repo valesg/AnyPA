@@ -20,7 +20,7 @@ struct AppView: View {
                 Text("Stations")
             }).tag(0)
             AnyAnnouncements(trainStation: testData[1]).tabItem({
-                Image(systemName: "list.dash")
+                Image(systemName: "dot.radiowaves.left.and.right")
                     .font(.title)
                 Text("Announcements")
             }).tag(1)
