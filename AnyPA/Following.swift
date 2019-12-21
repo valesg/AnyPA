@@ -34,8 +34,8 @@ struct Following: View {
                     }
                     Spacer()
                     }.padding()
-                
-                .navigationBarTitle("Following", displayMode: .inline)
+                       .navigationBarTitle(Text("Following"))
+                // .navigationBarTitle("Following", displayMode: .inline)
                 .navigationBarHidden(false)
             }
         }
