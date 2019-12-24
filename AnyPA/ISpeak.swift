@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ISpeak: View {
-    var announceType = ["Delay", "On-Time", "Ad-hoc", "Lost & Found", "Arrival", "Departure", "Boarding"]
+    var announceType = ["Delay", "On-Time", "Ad-hoc", "Lost & Found", "Boarding", "Departure", "Arrival"]
     var passengerType = ["with small children", "in First Class", "remaining"]
     var affectedTrainLine = ["Blair Bound", "Tunneys Bound", "Line 1"]
     var listeningStation = ["Tunneys", "Bayview", "Pimisi", "Lyon", "Parliament", "Rideau", "uOttawa", "Lees", "Hurdman", "Tremblay", "St-Laurent", "Cyrville", "Blair"]
@@ -19,8 +19,9 @@ struct ISpeak: View {
     @State private var selectedListeningStation = 0
     @State private var selectedAffectedTrainLine = 0
     @State var sayAnnouncement = false
-    @State var delay = 5
+    @State var delay = 10
     @State var trainLine: String = ""
+    @State var lostItem: String = ""
     
     var body: some View {
         NavigationView {
@@ -37,12 +38,12 @@ struct ISpeak: View {
                     Text("Build your \(self.announceType[selectedAnnounceType]) message:")
                     if self.announceType[selectedAnnounceType] == "Ad-hoc" {
                         Text("What do you want to say?")
-                        
+                        TextField("Enter your announcement", text: $trainLine)
                         Button(action: {
                             self.sayAnnouncement.toggle()
                         })
                            {
-                               Text("Say \(self.announceType[selectedAnnounceType]) Announcement")
+                               Text("Make \(self.announceType[selectedAnnounceType]) Announcement")
                            }
                 
                     }
@@ -64,7 +65,7 @@ struct ISpeak: View {
                                  self.sayAnnouncement.toggle()
                              })
                                 {
-                                    Text("Say \(self.announceType[selectedAnnounceType]) Announcement")
+                                    Text("Make \(self.announceType[selectedAnnounceType]) Announcement")
                                 }
                         }
                     else if self.announceType[selectedAnnounceType] == "Departure" {
@@ -74,7 +75,7 @@ struct ISpeak: View {
                                  self.sayAnnouncement.toggle()
                              })
                                 {
-                                    Text("Say \(self.announceType[selectedAnnounceType]) Announcement")
+                                    Text("Make \(self.announceType[selectedAnnounceType]) Announcement")
                                 }
                         }
                     else if self.announceType[selectedAnnounceType] == "Delay" {
@@ -96,8 +97,9 @@ struct ISpeak: View {
                              self.sayAnnouncement.toggle()
                          })
                             {
-                                Text("Say \(self.announceType[selectedAnnounceType]) Announcement")
+                                Text("Make \(self.announceType[selectedAnnounceType]) Announcement")
                             }
+                        
                     }
                     else if self.announceType[selectedAnnounceType] == "On-Time" {
                         Picker(selection: $selectedAffectedTrainLine, label: Text("Train Line")) {
@@ -110,24 +112,24 @@ struct ISpeak: View {
                             Text(self.listeningStation[$0])
                             }
                         }
-                        Text("Msg: Attention, Line 1 trains are running on time.")
+                        Text("Msg: Attention, \(self.affectedTrainLine[selectedAffectedTrainLine]) trains are running on time.")
                          Button(action: {
                             self.sayAnnouncement.toggle()
                          })
                             {
-                                Text("Say \(self.announceType[selectedAnnounceType]) Announcement")
+                                Text("Make \(self.announceType[selectedAnnounceType]) Announcement")
                             }
                     }
                     else if self.announceType[selectedAnnounceType] == "Lost & Found" {
-                            Text("Lost Item")
-                            Text("Description")
-                            Text("Msg: Pair of gloves found on Line 1")
+                            Text("Found Item:")
+                            TextField("E.g. Purse, glove etc.", text: $lostItem)
+                        Text("Msg: \(self.lostItem) found in train or station")
                         
                              Button(action: {
                                  self.sayAnnouncement.toggle()
                              })
                                 {
-                                    Text("Say \(self.announceType[selectedAnnounceType]) Announcement")
+                                    Text("Make \(self.announceType[selectedAnnounceType]) Announcement")
                                 }
                         }
                     else {
